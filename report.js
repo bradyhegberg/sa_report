@@ -12,7 +12,7 @@ var dateStrToday = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.get
 
 // options for GET
 var optionsget = {
-    host : 'sdg%5Cbrady.hegberg%40solutiondesign.com:n2BoERa%240p@api.springahead.com', // here only the domain name
+    host : 'api.springahead.com', // here only the domain name
     //host : 'www.google.com',
     // (no http/https !)
     port : 443,  //443 for https, 80 for http
@@ -28,7 +28,8 @@ http.createServer(function(req, res) {
     // on every request, we'll output 'Hello world'
     
     var pwd = req.params.pwd;
-    var springAheadURL = "https://sdg%5Cbrady.hegberg%40solutiondesign.com:n2BoERa%240p@api.springahead.com/v1/mytimecard/range/" + dateStrFirst + "/" + dateStrToday;
+    var user = req.params.user;    //eg: sdg%5Cbrady.hegberg%40solutiondesign.com
+    var springAheadURL = "https://" + user + ":" + pwd + "@api.springahead.com/v1/mytimecard/range/" + dateStrFirst + "/" + dateStrToday;
     
     res.writeHeader(200, {"Content-Type": "text/html"});
     res.write("<html>");
